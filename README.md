@@ -6,7 +6,8 @@ Automatic install DSpace on Ubuntu like systems
 This project was based in article LiveCD on [Wiki DSpace].
 
 Download a Linux Image
-----------------------
+=====================
+
 Para evitar o processo de instalação do Linux foi baixada uma imagem do XUbuntu, localizada no site [Virtual Box Images], conforme abaixo::
 
     Xubuntu 12.04 codename Precise Pangolin
@@ -15,26 +16,31 @@ Para evitar o processo de instalação do Linux foi baixada uma imagem do XUbunt
     Active user account(s) (username/password): xubuntu/reverse
 
 Clone the repository
---------------------
+===================
+
 Agora você irá "clonar" o projeto para a sua máquina local:
    
     $ git clone git@github.com:royopa/dspace-auto-install.git
 
 Change the parameters
----------------------
+=====================
+
 Altere os parâmetros dos arquivos abaixo de acordo com suas necessidades:
 
 build-dspace
 ------------
-    VERSION_DSPACE="4.1"
 
+    VERSION_DSPACE="4.1"
+    
 build.properties
-------------
+----------------
+
     dspace.name = DSpace
     default.language = pt_BR
-
+    
 dspace.cfg
-------------
+----------
+
     dspace.name = DSpace
     default.language = pt_BR
     mail.server=smtp.gmail.com
@@ -48,10 +54,9 @@ dspace.cfg
     mail.admin = treinamento.dspace@gmail.com
     alert.recipient = treinamento.dspace@gmail.com
     registration.notify = treinamento.dspace@gmail.com
-
+    
 Install
--------
-.. code-block:: bash
+=======
 
     $ php composer.phar install --dev
     $ ./build-dspace
