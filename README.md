@@ -8,11 +8,10 @@ This project was based in article LiveCD on [Wiki DSpace].
 Download a Linux Image
 =====================
 
-Para evitar o processo de instalação do Linux foi baixada uma imagem do XUbuntu, localizada no site [Virtual Box Images], conforme abaixo::
+Para evitar o processo de instalação do Linux foi baixada uma imagem do [XUbuntu], localizada no site [Virtual Box Images], conforme abaixo::
 
     Xubuntu 12.04 codename Precise Pangolin
     Size (compressed/uncompressed): 502.2 MBytes / 2.6 GBytes
-    [XUbuntu Image]
     Active user account(s) (username/password): xubuntu/reverse
 
 Clone the repository
@@ -63,4 +62,4 @@ Install
 
 [Virtual Box Images]:"http://virtualboxes.org/images/ubuntu/"
 [Wiki DSpace]:"https://wiki.duraspace.org/display/DSPACE/LiveCD"
-[XUbuntu Image]:"http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z"
+[XUbuntu]:"http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z"
