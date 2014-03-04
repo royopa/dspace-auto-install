@@ -26,9 +26,8 @@ sudo cp tomcat7 /etc/default/tomcat7
 sudo cp pg_hba.conf /etc/postgresql/9.1/main/pg_hba.conf
 
 # Clean up any old installation
-echo Removing /dspace /dspace-src
+echo Removing /dspace
 sudo rm -rf /dspace
-sudo rm -rf dspace/
 
 # Make the relevant directories
 echo  - Making /dspace
@@ -76,7 +75,7 @@ sudo cp build.properties dspace-src/build.properties
 
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
-cd dspace-src
+cd dspace-src/dspace/
 sudo mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
