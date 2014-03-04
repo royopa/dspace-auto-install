@@ -56,8 +56,8 @@ dspace.cfg
     
 Install
 =======
+Execute o script de instalação
 
-    $ php composer.phar install --dev
     $ ./build-dspace
 
 [Virtual Box Images]:"http://virtualboxes.org/images/ubuntu/"
