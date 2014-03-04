@@ -10,13 +10,10 @@ Download a Linux Image
 
 Para evitar o processo de instalação do Linux foi baixada uma imagem do XUbuntu, localizada no site [Virtual Box Images], conforme abaixo:
 
-**Xubuntu 12.04 codename Precise Pangolin**
-
-Size (compressed/uncompressed): 502.2 MBytes / 2.6 GBytes
-
-[XUbuntu Image]
-
-Active user account(s) (username/password): xubuntu/reverse
+    Xubuntu 12.04 codename Precise Pangolin
+    Size (compressed/uncompressed): 502.2 MBytes / 2.6 GBytes
+    [XUbuntu Image]
+    Active user account(s) (username/password): xubuntu/reverse
 
 Clone the repository
 --------------------
@@ -31,51 +28,38 @@ Altere os parâmetros dos arquivos abaixo de acordo com suas necessidades:
 build-dspace
 ------------
 
-VERSION_DSPACE="4.1"
+    VERSION_DSPACE="4.1"
 
 build.properties
 ------------
 
-dspace.name = DSpace
-
-default.language = pt_BR
+    dspace.name = DSpace
+    default.language = pt_BR
 
 dspace.cfg
 ------------
 
-dspace.name = DSpace
-
-default.language = pt_BR
-
-mail.server=smtp.gmail.com
-
-mail.server.username = treinamento.dspace@gmail.com
-
-mail.server.password = yourPassword
-
-mail.extraproperties = mail.smtp.socketFactory.port=465, \
-
-mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory, \
-
-mail.smtp.socketFactory.fallback=false
-
-mail.from.address = treinamento.dspace@gmail.com
-
-feedback.recipient = treinamento.dspace@gmail.com
-
-mail.admin = treinamento.dspace@gmail.com
-
-alert.recipient = treinamento.dspace@gmail.com
-
-registration.notify = treinamento.dspace@gmail.com
+    dspace.name = DSpace
+    default.language = pt_BR
+    mail.server=smtp.gmail.com
+    mail.server.username = treinamento.dspace@gmail.com
+    mail.server.password = yourPassword
+    mail.extraproperties = mail.smtp.socketFactory.port=465, \
+    mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory, \
+    mail.smtp.socketFactory.fallback=false
+    mail.from.address = treinamento.dspace@gmail.com
+    feedback.recipient = treinamento.dspace@gmail.com
+    mail.admin = treinamento.dspace@gmail.com
+    alert.recipient = treinamento.dspace@gmail.com
+    registration.notify = treinamento.dspace@gmail.com
 
 Install
 -------
 
-cd /home/xubuntu/dspace
+.. code-block:: bash
 
-./build-dspace
-
+    $ php composer.phar install --dev
+    $ ./build-dspace
 
 [Virtual Box Images]:"http://virtualboxes.org/images/ubuntu/"
 [Wiki DSpace]:"https://wiki.duraspace.org/display/DSPACE/LiveCD"
