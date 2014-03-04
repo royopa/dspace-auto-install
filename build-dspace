@@ -1,0 +1,121 @@
+#!/bin/bash
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+
+#Remove software not needed to make the resultant instalattion a bit smaller
+sudo apt-get remove brasero wodim tomboy f-spot gimp ekiga evolution pidgen transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2
+
+sudo apt-get update
+sudo apt-get install oracle-java7-installer maven ant ant-optional tomcat7 postgresql sublime-text-installer
+
+#faz o atalho para o sublime text
+sudo ln -s /opt/sublime_text/sublime_text /bin/sublime
+sudo ln -s /opt/sublime_text/sublime_text /bin/sublime_text
+
+#copiar o arquivo
+sudo ln -s /opt/sublime_text/sublime_text /bin/sublime
+
+#copiar o arquivo do tomcat
+sudo cp tomcat7 /etc/default/tomcat7
+
+#copiar o arquivo do postgresql
+sudo cp pg_hba.conf /etc/postgresql/9.1/main/pg_hba.conf
+
+# Clean up any old installation
+echo Removing /dspace /dspace-src
+sudo rm -rf /dspace
+
+# Make the relevant directories
+echo  - Making /dspace
+sudo mkdir /dspace
+sudo chmod o+w -R /dspace
+
+# Stop tomcat
+echo Stopping tomcat
+sudo service tomcat7 stop
+
+# Create the postgres user and database
+echo Initalise the database
+echo  - Dropping old dspace database
+sudo -u postgres dropdb dspace
+echo  - Dropping old dspace Postgres users
+sudo -u postgres dropuser dspace
+echo  - Creating the dspace Postgres user
+sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
+echo  - Creating the dspace database
+createdb -U dspace -E UNICODE dspace
+
+# Download DSpace
+VERSION_DSPACE="4.1"
+echo Download DSpace source
+echo  - Removing old copy of dspace-src
+sudo rm -rf dspace-src
+echo  - Downloading new copy of DSpace
+mkdir dspace-src
+wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
+echo  - Extracting the DSpace to /dspace-src
+tar -vzxf "dspace-$VERSION_DSPACE-src-release.tar.gz"
+# Remove unnecessary file
+echo  - Removing file downloaded
+sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
+echo  - "Copying dspace-$VERSION_DSPACE-src-release to dspace-src"
+cp -R "dspace-$VERSION_DSPACE-src-release/"* dspace-src
+# Remove unnecessary folder
+sudo rm -rf "dspace-$VERSION_DSPACE-src-release"
+
+# Build DSpace-installed
+echo Building DSpace
+# Change build.properties
+echo  - Copying build.properties to dspace-src/build.properties
+sudo cp build.properties dspace-src/build.properties
+
+pwd=`pwd`
+echo  - Running 'mvn package' on dspace-src
+cd dspace-src
+sudo mvn package
+
+echo  - Coping the customized dspace.cfg to /{dspace-build}/config
+sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
+
+echo  - Running ant fresh_install
+cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
+sudo ant fresh_install
+
+# mvn clean to conserve disk space
+echo  - Running mvn clean
+cd $pwd/dspace-src
+sudo mvn clean
+cd $pwd
+
+# Create an admin user
+echo Creating a DSpace admin user: username = dspace password = dspace
+sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
+
+# Delete old tomcat webapps
+echo Deleting old tomcat webapps
+sudo rm -rf /var/lib/tomcat7/webapps/*
+
+# Copy webapps to tomcat
+echo Copying webapps to tomcat
+echo  - jspui to jspui-installed
+sudo cp -R /dspace/webapps/jspui /var/lib/tomcat7/webapps/jspui
+echo  - xmlui to xmlui-installed
+sudo cp -R /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
+echo  - oai to oai-installed
+sudo cp -R /dspace/webapps/oai /var/lib/tomcat7/webapps/oai
+echo  - solr to solr
+sudo cp -R /dspace/webapps/solr /var/lib/tomcat7/webapps/solr
+
+echo Copying LiveCD ROOT webapp to tomcat
+sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
+
+sudo chmod o+w -R /dspace
+
+# Start tomcat
+echo Starting tomcat
+sudo service tomcat7 start
+
+# All done
+echo
+echo Build completed!
