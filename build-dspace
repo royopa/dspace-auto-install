@@ -9,6 +9,9 @@ sudo apt-get remove brasero wodim tomboy f-spot gimp ekiga evolution pidgen tran
 sudo apt-get update
 sudo apt-get install oracle-java7-installer maven ant ant-optional tomcat7 postgresql sublime-text-installer
 
+#seta a variável JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+
 #faz o atalho para o sublime text
 sudo ln -s /opt/sublime_text/sublime_text /bin/sublime
 sudo ln -s /opt/sublime_text/sublime_text /bin/sublime_text
