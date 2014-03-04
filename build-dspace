@@ -28,6 +28,7 @@ sudo cp pg_hba.conf /etc/postgresql/9.1/main/pg_hba.conf
 # Clean up any old installation
 echo Removing /dspace /dspace-src
 sudo rm -rf /dspace
+sudo rm -rf dspace/
 
 # Make the relevant directories
 echo  - Making /dspace
