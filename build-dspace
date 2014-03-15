@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
+sudo apt-get install language-pack-en
 sudo apt-get install software-properties-common python-software-properties
 
 sudo add-apt-repository ppa:webupd8team/java
@@ -9,7 +10,6 @@ sudo add-apt-repository ppa:webupd8team/sublime-text-3
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove brasero wodim tomboy f-spot gimp ekiga evolution pidgen transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 
-sudo apt-get update
 sudo apt-get install oracle-java7-installer maven ant ant-optional tomcat7 postgresql sublime-text-installer
 
 #seta a variável JAVA_HOME
