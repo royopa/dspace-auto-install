@@ -6,16 +6,8 @@ sudo apt-get install software-properties-common python-software-properties
 
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove brasero wodim tomboy f-spot gimp ekiga evolution pidgen transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
-sudo apt-get update
 sudo apt-get install openjdk-7-jdk 
 sudo apt-get install maven ant ant-optional tomcat7 postgresql
-
-#faz o atalho para o sublime text
-sudo ln -s /opt/sublime_text/sublime_text /bin/sublime
-sudo ln -s /opt/sublime_text/sublime_text /bin/sublime_text
-
-#copiar o arquivo
-sudo ln -s /opt/sublime_text/sublime_text /bin/sublime
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
