@@ -37,7 +37,7 @@ sudo -u postgres dropuser dspace
 echo  - Creating the dspace Postgres user
 sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
 echo  - Creating the dspace database
-createdb -U dspace -E UNICODE dspace
+createdb -U dspace -E SQL_ASCII dspace
 
 # Download DSpace
 VERSION_DSPACE="4.1"
