@@ -28,6 +28,10 @@ sudo chmod o+w -R /dspace
 echo Stopping tomcat
 sudo service tomcat7 stop
 
+# Restart postgresql
+echo Restarting service postgresql
+sudo service postgresql restart
+
 # Create the postgres user and database
 echo Initalise the database
 echo  - Dropping old dspace database
