@@ -13,7 +13,7 @@ sudo apt-get install maven ant ant-optional tomcat7 postgresql
 sudo cp tomcat7 /etc/default/tomcat7
 
 #copiar o arquivo do postgresql
-sudo cp pg_hba.conf /etc/postgresql/9.1/main/pg_hba.conf
+sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 
 # Clean up any old installation
 echo Removing /dspace
