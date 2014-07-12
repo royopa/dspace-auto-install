@@ -24,6 +24,14 @@ Agora você irá "clonar" o projeto para a sua máquina local:
    
     $ git clone git@github.com:royopa/dspace-auto-install.git
 
+
+OR download the package
+===============
+wget https://github.com/royopa/dspace-auto-install/archive/master.zip
+unzip master.zip
+cd dspace-auto-install-master
+
+
 Change the parameters
 =====================
 
