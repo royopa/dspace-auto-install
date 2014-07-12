@@ -7,6 +7,10 @@ This project was based in article LiveCD on [Wiki DSpace].
 
 http://royopa.wordpress.com/2014/03/04/instalacao-do-dspace-4-1-em-sistemas-ubuntu-like/
 
+Processo via linha de comando
+==============
+
+http://asciinema.org/a/10778
 
 Download a Linux Image
 =====================
