@@ -7,7 +7,7 @@ sudo apt-get install software-properties-common python-software-properties
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove brasero wodim tomboy f-spot gimp ekiga evolution pidgen transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 sudo apt-get install openjdk-7-jdk 
-sudo apt-get install maven ant ant-optional tomcat7 postgresql
+sudo apt-get install maven ant ant-optional tomcat7 postgresql tomcat7-admin
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
@@ -103,11 +103,16 @@ echo  - oai to oai-installed
 sudo ln -s /dspace/webapps/oai /var/lib/tomcat7/webapps/oai
 echo  - solr to solr
 sudo ln -s /dspace/webapps/solr /var/lib/tomcat7/webapps/solr
+echo  - sword to sword
+sudo ln -s /dspace/webapps/sword /var/lib/tomcat7/webapps/sword
+echo  - lni to lni
+sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
 
 sudo chmod o+w -R /dspace
+sudo chmod o+x -R /dspace
 
 # Start tomcat
 echo Starting tomcat
