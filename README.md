@@ -31,10 +31,13 @@ Agora você irá "clonar" o projeto para a sua máquina local:
 
 OR download the package
 ===============
+```shell
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
-unzip master.zip
-cd dspace-auto-install-master
 
+unzip master.zip
+
+cd dspace-auto-install-master
+```
 
 Change the parameters
 =====================
