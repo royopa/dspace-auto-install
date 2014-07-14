@@ -17,6 +17,8 @@ Download a Linux Image
 
 Para evitar o processo de instalação do Linux foi baixada uma imagem do [XUbuntu], localizada no site [Virtual Box Images], conforme abaixo::
 
+http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z
+
     Xubuntu 12.04 codename Precise Pangolin
     Size (compressed/uncompressed): 502.2 MBytes / 2.6 GBytes
     Active user account(s) (username/password): xubuntu/reverse
