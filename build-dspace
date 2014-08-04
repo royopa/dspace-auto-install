@@ -44,7 +44,7 @@ echo  - Creating the dspace database
 createdb -U dspace dspace
 
 # Download DSpace
-VERSION_DSPACE="4.1"
+VERSION_DSPACE="4.2"
 echo Download DSpace source
 echo  - Removing old copy of dspace-src
 sudo rm -rf dspace-src
