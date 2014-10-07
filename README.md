@@ -49,7 +49,7 @@ Altere os parâmetros dos arquivos abaixo de acordo com suas necessidades:
 build-dspace
 ------------
 
-    VERSION_DSPACE="4.1"
+    VERSION_DSPACE="4.2"
     
 build.properties
 ----------------
