@@ -14,6 +14,7 @@ sudo cp tomcat7 /etc/default/tomcat7
 
 #copiar o arquivo do postgresql
 sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
+sudo cp pg_hba.conf /usr/share/postgresql/9.3/pg_hba.conf
 
 # Clean up any old installation
 echo Removing /dspace
