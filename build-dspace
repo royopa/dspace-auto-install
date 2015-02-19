@@ -76,7 +76,7 @@ echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
 
 echo  - Running ant fresh_install
-cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
+cd "$pwd/dspace-src/dspace/target/dspace-installer/"
 sudo ant fresh_install
 
 # mvn clean to conserve disk space
@@ -111,7 +111,6 @@ sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
 
-sudo chmod o+w -R /dspace
 sudo chmod o+x -R /dspace
 
 # Start tomcat
