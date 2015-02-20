@@ -42,24 +42,23 @@ echo  - Creating the dspace Postgres user
 sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
 echo  - Creating the dspace database
 createdb -U dspace dspace
-
+
 # Download DSpace
-VERSION_DSPACE="4.2"
 echo Download DSpace source
 echo  - Removing old copy of dspace-src
 sudo rm -rf dspace-src
 echo  - Downloading new copy of DSpace
 mkdir dspace-src
-wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
-echo  - Extracting the DSpace to /dspace-src
-tar -vzxf "dspace-$VERSION_DSPACE-src-release.tar.gz"
+wget "https://github.com/DSpace/DSpace/archive/master.zip"
+echo  - Extracting the DSpace downloaded
+unzip "master.zip"
 # Remove unnecessary file
 echo  - Removing file downloaded
-sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
-echo  - "Copying dspace-$VERSION_DSPACE-src-release to dspace-src"
-cp -R "dspace-$VERSION_DSPACE-src-release/"* dspace-src
+sudo rm "master.zip"
+echo  - "Copying DSpace-master to dspace-src"
+cp -R "DSpace-master/"* dspace-src
 # Remove unnecessary folder
-sudo rm -rf "dspace-$VERSION_DSPACE-src-release"
+sudo rm -rf "DSpace-master"
 
 # Build DSpace-installed
 echo Building DSpace
@@ -76,7 +75,7 @@ echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
 
 echo  - Running ant fresh_install
-cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
+cd "$pwd/dspace-src/dspace/target/dspace-installer/"
 sudo ant fresh_install
 
 # mvn clean to conserve disk space
