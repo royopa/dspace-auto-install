@@ -11,7 +11,7 @@ sudo apt-get install -y maven3
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 sudo apt-get install -y openjdk-7-jdk 
-sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin
+sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
@@ -75,7 +75,7 @@ sudo rm -rf "DSpace-master"
 echo Building DSpace
 # Change build.properties
 echo  - Copying build.properties to /dspace-src/build.properties
-sudo cp build.properties dspace-src/build.properties
+sudo cp build.properties /dspace-src/build.properties
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
