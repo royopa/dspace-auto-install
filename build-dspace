@@ -63,17 +63,23 @@ echo Building DSpace
 echo  - Copying build.properties to dspace-src/build.properties
 cp build.properties dspace-src/build.properties
 
+# Make the relevant directories
+echo  - Making /dspace
+sudo mkdir /dspace
+sudo chown vagrant /dspace
+su - vagrant
+
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
 cd dspace-src/dspace/
-sudo mvn package
+mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
-sudo ant fresh_install
+ant fresh_install
 
 # Make the relevant directories
 echo  - Making /dspace
