@@ -23,8 +23,9 @@ sudo rm -rf /dspace
 
 # Make the relevant directories
 echo  - Making /dspace
-sudo mkdir /dspace
-sudo chmod o+w -R /dspace
+mkdir /dspace
+chown vagrant /dspace
+su - vagrant
 
 # Stop tomcat
 echo Stopping tomcat
