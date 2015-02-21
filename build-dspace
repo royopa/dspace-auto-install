@@ -11,10 +11,6 @@ sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmis
 sudo apt-get install -y openjdk-7-jdk 
 sudo apt-get install -y maven ant ant-optional tomcat7 postgresql tomcat7-admin
 
-#criar usuário dspace - dspace
-#useradd –m dspace
-#passwd dspace
-
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
 
