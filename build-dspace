@@ -70,7 +70,7 @@ sudo cp build.properties dspace-src/build.properties
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
 cd dspace-src/dspace/
-mvn package
+sudo mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
