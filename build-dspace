@@ -6,6 +6,8 @@ sudo apt-get update
 sudo apt-get install -y language-pack-en
 sudo apt-get install -y software-properties-common python-software-properties
 
+export LANG=en_US.UTF-8
+
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 sudo apt-get install -y openjdk-7-jdk 
@@ -24,11 +26,6 @@ sudo service tomcat7 stop
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
 
-# Clean up any old installation
-echo Removing /dspace
-sudo rm -rf /dspace
-sudo rm -rf /dspace/*
-
 # Restart postgresql
 echo Restarting service postgresql
 sudo service postgresql restart
@@ -42,12 +39,12 @@ sudo -u postgres dropuser dspace
 echo  - Creating the dspace Postgres user
 sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
 echo  - Creating the dspace database
-createdb -U dspace dspace
+createdb --template=template0 -U dspace dspace
 
 # Download DSpace
-echo Download DSpace source
-echo  - Removing old copy of dspace-src
-sudo rm -rf /dspace-src
+
+rm dspace-4.2-src-release.tar.gz*
+
 echo  - Downloading new copy of DSpace
 wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
 echo  - Extracting the DSpace to /dspace-src
@@ -60,6 +57,8 @@ sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
 echo  - Making /dspace-src
 sudo mkdir /dspace-src
 sudo chown vagrant /dspace-src
+
+sudo chown tomcat7:tomcat7 /dspace -R
 
 echo  - "Copying dspace-$VERSION_DSPACE-src-release to dspace-src"
 cp -R "dspace-$VERSION_DSPACE-src-release/"* /dspace-src
@@ -88,12 +87,6 @@ echo  - Running ant fresh_install
 cd "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
 ant fresh_install
 
-# Make the relevant directories
-#echo  - Making /dspace
-#chmod o+r -R /dspace
-#chmod o+x -R /dspace
-#chmod o+w -R /dspace/log
-
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
 sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
@@ -119,7 +112,6 @@ sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 # Start tomcat
 echo Starting tomcat
-sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 start
 
 # All done
