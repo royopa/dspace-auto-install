@@ -11,6 +11,10 @@ sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmis
 sudo apt-get install -y openjdk-7-jdk 
 sudo apt-get install -y maven ant ant-optional tomcat7 postgresql tomcat7-admin
 
+#criar usuário dspace - dspace
+#useradd –m dspace
+#passwd dspace
+
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
 
@@ -89,14 +93,14 @@ cd "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
 ant fresh_install
 
 # Make the relevant directories
-echo  - Making /dspace
-chmod o+r -R /dspace
-chmod o+x -R /dspace
-chmod o+w -R /dspace/log
+#echo  - Making /dspace
+#chmod o+r -R /dspace
+#chmod o+x -R /dspace
+#chmod o+w -R /dspace/log
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
-/dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
+sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
 
 # Delete old tomcat webapps
 echo Deleting old tomcat webapps
@@ -119,6 +123,7 @@ sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 # Start tomcat
 echo Starting tomcat
+sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 start
 
 # All done
