@@ -11,7 +11,7 @@ sudo apt-get install -y maven ant ant-optional tomcat7 postgresql tomcat7-admin
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
-
+i
 #copiar o arquivo do postgresql
 sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 
@@ -44,7 +44,7 @@ echo  - Creating the dspace database
 createdb -U dspace dspace
 
 # Download DSpace
-VERSION_DSPACE="4.2"
+VERSION_DSPACE="5.0"
 echo Download DSpace source
 echo  - Removing old copy of dspace-src
 sudo rm -rf dspace-src
@@ -73,7 +73,7 @@ cd dspace-src/dspace/
 sudo mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
+sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-installer/"
