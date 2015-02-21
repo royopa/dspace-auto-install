@@ -71,18 +71,18 @@ sudo cp build.properties dspace-src/build.properties
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
 cd dspace-src/dspace/
-sudo mvn package
+mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-installer/"
-sudo ant fresh_install
+ant fresh_install
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
-sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
+/dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
 
 # Delete old tomcat webapps
 echo Deleting old tomcat webapps
@@ -105,8 +105,6 @@ sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
-
-sudo chmod o+x -R /dspace
 
 # Start tomcat
 echo Starting tomcat
