@@ -39,21 +39,26 @@ echo  - Creating the dspace Postgres user
 sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
 echo  - Creating the dspace database
 createdb -U dspace dspace
-
+
 # Download DSpace
 echo Download DSpace source
 echo  - Removing old copy of dspace-src
-sudo rm -rf dspace-src
+sudo rm -rf /dspace-src
 echo  - Downloading new copy of DSpace
-mkdir dspace-src
 wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
 echo  - Extracting the DSpace to /dspace-src
 tar -vzxf "dspace-$VERSION_DSPACE-src-release.tar.gz"
 # Remove unnecessary file
 echo  - Removing file downloaded
 sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
+
+# Make the relevant directories
+echo  - Making /dspace-src
+sudo mkdir /dspace-src
+sudo chown vagrant /dspace-src
+
 echo  - "Copying dspace-$VERSION_DSPACE-src-release to dspace-src"
-cp -R "dspace-$VERSION_DSPACE-src-release/"* dspace-src
+cp -R "dspace-$VERSION_DSPACE-src-release/"* /dspace-src
 # Remove unnecessary folder
 sudo rm -rf "dspace-$VERSION_DSPACE-src-release"
 
@@ -71,14 +76,14 @@ su - vagrant
 
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
-cd dspace-src/dspace/
+cd /dspace-src/dspace/
 mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
+cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
 
 echo  - Running ant fresh_install
-cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
+cd "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
 ant fresh_install
 
 # Make the relevant directories
