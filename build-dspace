@@ -19,11 +19,6 @@ sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 echo Removing /dspace
 sudo rm -rf /dspace
 
-# Make the relevant directories
-echo  - Making /dspace
-sudo mkdir /dspace
-sudo chmod o+w -R /dspace
-
 # Stop tomcat
 echo Stopping tomcat
 sudo service tomcat7 stop
@@ -77,13 +72,14 @@ sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-bu
 
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
-sudo ant fresh_install
+ant fresh_install
 
-# mvn clean to conserve disk space
-echo  - Running mvn clean
-cd $pwd/dspace-src
-sudo mvn clean
-cd $pwd
+# Make the relevant directories
+echo  - Making /dspace
+sudo mkdir /dspace
+sudo chmod o+r -R /dspace
+sudo chmod o+x -R /dspace
+sudo chmod o+w -R /dspace/log
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
