@@ -27,6 +27,7 @@ sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
 # Clean up any old installation
 echo Removing /dspace
 sudo rm -rf /dspace
+sudo rm -rf /dspace/*
 
 # Restart postgresql
 echo Restarting service postgresql
