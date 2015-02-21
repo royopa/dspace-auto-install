@@ -15,13 +15,13 @@ sudo cp tomcat7 /etc/default/tomcat7
 #copiar o arquivo do postgresql
 sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 
-# Clean up any old installation
-echo Removing /dspace
-sudo rm -rf /dspace
-
 # Stop tomcat
 echo Stopping tomcat
 sudo service tomcat7 stop
+
+# Clean up any old installation
+echo Removing /dspace
+sudo rm -rf /dspace
 
 # Restart postgresql
 echo Restarting service postgresql
@@ -72,11 +72,10 @@ cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/c
 
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
-ant fresh_install
+sudo ant fresh_install
 
 # Make the relevant directories
 echo  - Making /dspace
-mkdir /dspace
 chmod o+r -R /dspace
 chmod o+x -R /dspace
 chmod o+w -R /dspace/log
