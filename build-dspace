@@ -74,8 +74,6 @@ cp build.properties dspace-src/build.properties
 # Make the relevant directories
 echo  - Making /dspace
 sudo mkdir /dspace
-sudo chown vagrant /dspace
-su - vagrant
 
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
