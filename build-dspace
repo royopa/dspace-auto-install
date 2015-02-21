@@ -77,7 +77,7 @@ su - vagrant
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
 cd /dspace-src/dspace/
-mvn package
+mvn -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
