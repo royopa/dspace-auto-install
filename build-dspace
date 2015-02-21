@@ -49,14 +49,14 @@ echo  - Removing old copy of dspace-src
 sudo rm -rf dspace-src
 echo  - Downloading new copy of DSpace
 mkdir dspace-src
-wget "https://github.com/DSpace/DSpace/archive/master.zip"
+sudo wget "https://github.com/DSpace/DSpace/archive/master.zip"
 echo  - Extracting the DSpace downloaded
-unzip "master.zip"
+sudo unzip "master.zip"
 # Remove unnecessary file
 echo  - Removing file downloaded
 sudo rm "master.zip"
 echo  - "Copying DSpace-master to dspace-src"
-cp -R "DSpace-master/"* dspace-src
+sudo cp -R "DSpace-master/"* dspace-src
 # Remove unnecessary folder
 sudo rm -rf "DSpace-master"
 
