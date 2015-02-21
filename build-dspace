@@ -24,12 +24,7 @@ sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 # Clean up any old installation
 echo Removing /dspace
 sudo rm -rf /dspace
-
-# Make the relevant directories
-echo  - Making /dspace
-sudo mkdir /dspace
-sudo chown vagrant /dspace
-su - vagrant
+sudo rm -rf /dspace/*
 
 # Stop tomcat
 echo Stopping tomcat
@@ -96,7 +91,7 @@ ant fresh_install
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
-/dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
+sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
 
 # Delete old tomcat webapps
 echo Deleting old tomcat webapps
@@ -119,6 +114,7 @@ sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 # Start tomcat
 echo Starting tomcat
+sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 start
 
 # All done
