@@ -35,6 +35,9 @@ su - vagrant
 echo Stopping tomcat
 sudo service tomcat7 stop
 
+echo Copying LiveCD ROOT webapp to tomcat
+sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
+
 # Restart postgresql
 echo Restarting service postgresql
 sudo service postgresql restart
@@ -113,9 +116,6 @@ echo  - sword to sword
 sudo ln -s /dspace/webapps/sword /var/lib/tomcat7/webapps/sword
 echo  - lni to lni
 sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
-
-echo Copying LiveCD ROOT webapp to tomcat
-sudo cp -R $pwd/ROOT /var/lib/tomcat7/webapps/ROOT
 
 # Start tomcat
 echo Starting tomcat
