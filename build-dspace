@@ -70,7 +70,7 @@ sudo cp build.properties dspace-src/build.properties
 pwd=`pwd`
 echo  - Running 'mvn package' on dspace-src
 cd dspace-src/dspace/
-sudo mvn package
+mvn package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
@@ -78,12 +78,6 @@ sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-bu
 echo  - Running ant fresh_install
 cd "$pwd/dspace-src/dspace/target/dspace-installer/"
 sudo ant fresh_install
-
-# mvn clean to conserve disk space
-echo  - Running mvn clean
-cd $pwd/dspace-src
-sudo mvn clean
-cd $pwd
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
