@@ -26,7 +26,8 @@ sudo rm -rf /dspace
 # Make the relevant directories
 echo  - Making /dspace
 sudo mkdir /dspace
-sudo chmod o+w -R /dspace
+sudo chown vagrant /dspace
+su - vagrant
 
 # Stop tomcat
 echo Stopping tomcat
@@ -49,44 +50,44 @@ createdb -U dspace dspace
 
 # Download DSpace
 echo Download DSpace source
-echo  - Removing old copy of dspace-src
-sudo rm -rf dspace-src
+echo  - Removing old copy of /dspace-src
+sudo rm -rf /dspace-src
+
 echo  - Downloading new copy of DSpace
-mkdir dspace-src
 sudo wget "https://github.com/DSpace/DSpace/archive/master.zip"
 echo  - Extracting the DSpace downloaded
 sudo unzip "master.zip"
 # Remove unnecessary file
 echo  - Removing file downloaded
 sudo rm "master.zip"
-echo  - "Copying DSpace-master to dspace-src"
-sudo cp -R "DSpace-master/"* dspace-src
+
+# Make the relevant directories
+echo  - Making /dspace-src
+sudo mkdir /dspace-src
+sudo chown vagrant /dspace-src
+
+echo  - "Copying DSpace-master to /dspace-src"
+sudo cp -R "DSpace-master/"* /dspace-src
 # Remove unnecessary folder
 sudo rm -rf "DSpace-master"
 
 # Build DSpace-installed
 echo Building DSpace
 # Change build.properties
-echo  - Copying build.properties to dspace-src/build.properties
+echo  - Copying build.properties to /dspace-src/build.properties
 sudo cp build.properties dspace-src/build.properties
 
-pwd=`pwd`
-echo  - Running 'mvn package' on dspace-src
-cd dspace-src/dspace/
-sudo mvn package
+echo  - Running 'mvn package' on /dspace-src
+cd /dspace-src/dspace/
+mvn -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-sudo cp $pwd/dspace.cfg "$pwd/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
+pwd=`pwd`
+sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
-cd "$pwd/dspace-src/dspace/target/dspace-installer/"
-sudo ant fresh_install
-
-# mvn clean to conserve disk space
-echo  - Running mvn clean
-cd $pwd/dspace-src
-sudo mvn clean
-cd $pwd
+cd "/dspace-src/dspace/target/dspace-installer/"
+ant fresh_install
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
@@ -112,9 +113,7 @@ echo  - lni to lni
 sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
 
 echo Copying LiveCD ROOT webapp to tomcat
-sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
-
-sudo chmod o+x -R /dspace
+sudo cp -R $pwd/ROOT /var/lib/tomcat7/webapps/ROOT
 
 # Start tomcat
 echo Starting tomcat
