@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERSION_DSPACE="5.0"
+
 sudo apt-get update
 sudo apt-get install -y language-pack-en
 sudo apt-get install -y software-properties-common python-software-properties
@@ -44,7 +46,6 @@ echo  - Creating the dspace database
 createdb -U dspace dspace
 
 # Download DSpace
-VERSION_DSPACE="5.0"
 echo Download DSpace source
 echo  - Removing old copy of dspace-src
 sudo rm -rf dspace-src
