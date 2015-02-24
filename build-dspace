@@ -81,7 +81,7 @@ echo  - Copying build.properties to /dspace-src/build.properties
 sudo cp build.properties /dspace-src/build.properties
 
 echo  - Running 'mvn package' on /dspace-src
-cd /dspace-src/dspace/ && mvn -X package -Dmirage2.on=true
+cd /dspace-src/dspace/ && mvn3 -X package -Dmirage2.on=true
 #mvn3 -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
