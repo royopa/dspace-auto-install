@@ -57,32 +57,32 @@ echo  - Removing old copy of /dspace-src
 sudo rm -rf /dspace-src
 
 echo  - Downloading new copy of DSpace
-sudo wget "https://github.com/DSpace/DSpace/archive/master.zip"
+wget "https://github.com/DSpace/DSpace/archive/master.zip"
 echo  - Extracting the DSpace downloaded
-sudo unzip -o "master.zip"
+unzip -o "master.zip"
 # Remove unnecessary file
 echo  - Removing file downloaded
-sudo rm "master.zip"
+rm "master.zip"
 
 # Make the relevant directories
 echo  - Making /dspace-src
+sudo rm -rf /dspace-src/*
 sudo mkdir /dspace-src
 sudo chown vagrant /dspace-src
 
 echo  - "Copying DSpace-master to /dspace-src"
 sudo cp -R "DSpace-master/"* /dspace-src
 # Remove unnecessary folder
-sudo rm -rf "DSpace-master"
+rm -rf "DSpace-master"
 
 # Build DSpace-installed
 echo Building DSpace
 # Change build.properties
 echo  - Copying build.properties to /dspace-src/build.properties
-sudo cp build.properties /dspace-src/build.properties
+cp build.properties /dspace-src/build.properties
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/ && mvn3 -X package -Dmirage2.on=true
-#mvn3 -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd`
