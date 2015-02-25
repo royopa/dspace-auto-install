@@ -4,14 +4,22 @@ sudo apt-get update
 sudo apt-get install -y language-pack-en
 sudo apt-get install -y software-properties-common python-software-properties
 
-sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main"
+sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main" -y
+sudo apt-add-repository ppa:chris-lea/node.js -y
+sudo apt-add-repository ppa:brightbox/ruby-ng -y
+
 sudo apt-get update
-sudo apt-get install -y maven3
+sudo apt-get install -y maven3 nodejs ruby2.2
+
+sudo gem install sass -v 3.3.14
+sudo gem install compass -v 1.0.1
 
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 sudo apt-get install -y openjdk-7-jdk 
-sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip
+sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip curl nodejs npm
+
+sudo npm install -g bower && sudo npm install -g grunt && sudo npm install -g grunt-cli
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
@@ -24,7 +32,7 @@ sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 
 # Clean up any old installation
 echo Removing /dspace
-sudo rm -rf /dspace
+sudo rm -rf /dspace/*
 
 # Make the relevant directories
 echo  - Making /dspace
@@ -54,7 +62,7 @@ createdb -U dspace dspace
 # Download DSpace
 echo Download DSpace source
 echo  - Removing old copy of /dspace-src
-sudo rm -rf /dspace-src
+sudo rm -rf /dspace-src/*
 
 echo  - Downloading new copy of DSpace
 wget "https://github.com/DSpace/DSpace/archive/master.zip"
@@ -81,8 +89,10 @@ echo Building DSpace
 echo  - Copying build.properties to /dspace-src/build.properties
 cp build.properties /dspace-src/build.properties
 
+export MAVEN_OPTS=-Xmx1024M
+
 echo  - Running 'mvn package' on /dspace-src
-cd /dspace-src/dspace/ && mvn3 -X package -Dmirage2.on=true
+cd /dspace-src/dspace/ && mvn3 -X package -Dmirage2.on=true -Dmirage2.deps.included=false
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd`
