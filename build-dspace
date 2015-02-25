@@ -96,7 +96,9 @@ cp build.properties /dspace-src/build.properties
 export MAVEN_OPTS=-Xmx1024M
 
 echo  - Running 'mvn package' on /dspace-src
-cd /dspace-src/dspace/ && mvn3 -X package -Dmirage2.on=true -Dmirage2.deps.included=false
+cd /dspace-src/dspace/
+mvn3 clean install license:check -Dmaven.test.skip=false
+mvn3 -X package -Dmirage2.on=true -Dmirage2.deps.included=false
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd`
