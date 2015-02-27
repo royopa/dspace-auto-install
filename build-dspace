@@ -65,6 +65,7 @@ sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
 echo  - Making /dspace-src
 sudo mkdir /dspace-src
 sudo chown vagrant /dspace-src
+sudo chown xubuntu /dspace-src
 
 echo  - "Copying dspace-$VERSION_DSPACE-src-release to /dspace-src"
 cp -R "dspace-$VERSION_DSPACE-src-release/"* /dspace-src
