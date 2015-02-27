@@ -75,7 +75,7 @@ sudo rm -rf "dspace-$VERSION_DSPACE-src-release"
 echo Building DSpace
 # Change build.properties
 echo  - Copying build.properties to /dspace-src/build.properties
-sudo cp build.properties dspace-src/build.properties
+sudo cp build.properties /dspace-src/build.properties
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
