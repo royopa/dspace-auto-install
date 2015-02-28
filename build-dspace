@@ -84,8 +84,7 @@ sudo mvn3 -X package
 sudo mvn -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-pwd=`pwd`
-sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
+pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "/dspace-src/dspace/target/dspace-installer/"
