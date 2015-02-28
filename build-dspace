@@ -97,16 +97,15 @@ export MAVEN_OPTS=-Xmx1024M
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
-mvn3 clean install license:check -Dmaven.test.skip=false
-mvn3 -X package -Dmirage2.on=true -Dmirage2.deps.included=false
+sudo mvn3 clean install license:check -Dmaven.test.skip=false
+sudo mvn3 -X package -Dmirage2.on=true -Dmirage2.deps.included=false
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-pwd=`pwd`
-sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
+pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "/dspace-src/dspace/target/dspace-installer/"
-ant fresh_install
+sudo ant fresh_install
 
 # Create an admin user
 echo Creating a DSpace admin user: username = dspace password = dspace
@@ -118,18 +117,14 @@ sudo rm -rf /var/lib/tomcat7/webapps/*
 
 # Copy webapps to tomcat
 echo Link webapps to tomcat
-echo  - jspui to jspui-installed
 sudo ln -s /dspace/webapps/jspui /var/lib/tomcat7/webapps/jspui
-echo  - xmlui to xmlui-installed
-sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
-echo  - oai to oai-installed
 sudo ln -s /dspace/webapps/oai /var/lib/tomcat7/webapps/oai
-echo  - solr to solr
+sudo ln -s /dspace/webapps/rdf /var/lib/tomcat7/webapps/rdf
+sudo ln -s /dspace/webapps/rest /var/lib/tomcat7/webapps/rest
 sudo ln -s /dspace/webapps/solr /var/lib/tomcat7/webapps/solr
-echo  - sword to sword
 sudo ln -s /dspace/webapps/sword /var/lib/tomcat7/webapps/sword
-echo  - lni to lni
-sudo ln -s /dspace/webapps/lni /var/lib/tomcat7/webapps/lni
+sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat7/webapps/swordv2
+sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
 
 # Start tomcat
 echo Starting tomcat
