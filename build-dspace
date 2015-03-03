@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION_DSPACE="4.2"
+VERSION_DSPACE="4.3"
 
 sudo apt-get update
 sudo apt-get install -y language-pack-en
