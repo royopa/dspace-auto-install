@@ -54,9 +54,9 @@ echo  - Removing old copy of dspace-src
 sudo rm -rf /dspace-src
 
 echo  - Downloading new copy of DSpace
-wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
+sudo wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
 echo  - Extracting the DSpace to /dspace-src
-tar -vzxf "dspace-$VERSION_DSPACE-src-release.tar.gz"
+sudo tar -vzxf "dspace-$VERSION_DSPACE-src-release.tar.gz"
 # Remove unnecessary file
 echo  - Removing file downloaded
 sudo rm "dspace-$VERSION_DSPACE-src-release.tar.gz"
@@ -76,15 +76,15 @@ sudo rm -rf "dspace-$VERSION_DSPACE-src-release"
 echo Building DSpace
 # Change build.properties
 echo  - Copying build.properties to /dspace-src/build.properties
-sudo cp build.properties /dspace-src/build.properties
+sudo cp -f build.properties /dspace-src/build.properties
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
 sudo mvn3 -X package
 sudo mvn -X package
 
-echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
+#echo  - Coping the customized dspace.cfg to /{dspace-build}/config
+#pwd=`pwd` && sudo cp -f $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "/dspace-src/dspace/target/dspace-installer/"
