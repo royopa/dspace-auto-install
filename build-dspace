@@ -30,9 +30,6 @@ sudo rm -rf /dspace/*
 echo Stopping tomcat
 sudo service tomcat7 stop
 
-echo Copying LiveCD ROOT webapp to tomcat
-sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
-
 # Restart postgresql
 echo Restarting service postgresql
 sudo service postgresql restart
@@ -78,13 +75,16 @@ echo Building DSpace
 echo  - Copying build.properties to /dspace-src/build.properties
 sudo cp -f build.properties /dspace-src/build.properties
 
+echo  - Coping the customized dspace.cfg to /{dspace-build}/config
+sudo cp -f dspace.cfg /dspace-src/dspace.cfg
+
+echo Copying LiveCD ROOT webapp to dspace-src
+sudo cp -f ROOT /dspace-src/ROOT
+
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
 sudo mvn3 -X package
 sudo mvn -X package
-
-#echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-#pwd=`pwd` && sudo cp -f $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
 
 echo  - Running ant fresh_install
 cd "/dspace-src/dspace/target/dspace-installer/"
@@ -108,6 +108,9 @@ sudo ln -s /dspace/webapps/solr /var/lib/tomcat7/webapps/solr
 sudo ln -s /dspace/webapps/sword /var/lib/tomcat7/webapps/sword
 sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat7/webapps/swordv2
 sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
+
+echo Copying LiveCD ROOT webapp to tomcat
+sudo cp -R /dspace-src/ROOT /var/lib/tomcat7/webapps/ROOT
 
 # Start tomcat
 echo Starting tomcat
