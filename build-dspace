@@ -81,6 +81,11 @@ sudo chown vagrant /dspace-src
 
 echo  - "Copying DSpace-master to /dspace-src"
 sudo cp -R "DSpace-master/"* /dspace-src
+
+sudo cp -f build.properties /dspace-src/build.properties
+sudo cp -f dspace.cfg /dspace-src/dspace.cfg
+sudo cp -R ROOT /dspace-src/ROOT
+
 # Remove unnecessary folder
 rm -rf "DSpace-master"
 
