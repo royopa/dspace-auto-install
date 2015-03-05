@@ -109,6 +109,7 @@ sudo cp -R /dspace-src/ROOT /var/lib/tomcat7/webapps/ROOT
 
 # Start tomcat
 echo Starting tomcat
+sudo usermod -a -G vagrant tomcat7
 sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 start
 
