@@ -9,7 +9,7 @@ sudo apt-get install -y software-properties-common python-software-properties
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn 
 sudo apt-get install -y openjdk-7-jdk 
-sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin maven
+sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin maven mc
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
