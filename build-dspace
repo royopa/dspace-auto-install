@@ -60,6 +60,11 @@ sudo mkdir /dspace-src
 sudo chown vagrant /dspace-src
 sudo chown xubuntu /dspace-src
 
+echo  - Making /dspace
+sudo useradd -m dspace
+sudo mkdir /dspace
+sudo chown dspace /dspace
+
 echo  - "Copying dspace-$VERSION_DSPACE-src-release to /dspace-src"
 cp -R "dspace-$VERSION_DSPACE-src-release/"* /dspace-src
 # Remove unnecessary folder
