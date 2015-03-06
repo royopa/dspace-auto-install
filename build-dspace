@@ -102,6 +102,7 @@ echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace/
 sudo mvn clean install license:check -Dmaven.test.skip=false
 sudo mvn -X package -Dmirage2.on=true -Dmirage2.deps.included=false
+sudo mvn dependency:purge-local-repository -DreResolve=false
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
