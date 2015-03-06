@@ -37,9 +37,9 @@ sudo rm -rf /dspace/*
 
 # Make the relevant directories
 echo  - Making /dspace
+sudo useradd -m dspace
 sudo mkdir /dspace
-sudo chown vagrant /dspace
-su - vagrant
+sudo chown dspace /dspace
 
 # Stop tomcat
 echo Stopping tomcat
@@ -77,6 +77,7 @@ rm "master.zip"
 echo  - Making /dspace-src
 sudo rm -rf /dspace-src/*
 sudo mkdir /dspace-src
+sudo chown dspace /dspace-src
 sudo chown vagrant /dspace-src
 
 echo  - "Copying DSpace-master to /dspace-src"
