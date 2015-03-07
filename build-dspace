@@ -99,10 +99,8 @@ cp build.properties /dspace-src/build.properties
 export MAVEN_OPTS=-Xmx1024M
 
 echo  - Running 'mvn package' on /dspace-src
-cd /dspace-src/dspace/
-sudo mvn clean install license:check -Dmaven.test.skip=false
+cd /dspace-src/dspace
 sudo mvn -X package -Dmirage2.on=true -Dmirage2.deps.included=false
-sudo mvn dependency:purge-local-repository -DreResolve=false
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
@@ -132,7 +130,9 @@ sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
 
 # Start tomcat
 echo Starting tomcat
-sudo service tomcat7 start
+sudo usermod -a -G vagrant tomcat7
+sudo chown tomcat7:tomcat7 /dspace -R
+sudo service tomcat7 restart
 
 # All done
 echo
