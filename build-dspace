@@ -67,7 +67,7 @@ sudo rm -rf /dspace-src/*
 
 echo  - Downloading new copy of DSpace
 #wget "https://github.com/DSpace/DSpace/archive/master.zip"
-wget "https://github.com/DSpace/DSpace/archive/dspace-5.2.zip"
+wget "https://github.com/DSpace/DSpace/archive/dspace-5.2.zip" -O master.zip
 echo  - Extracting the DSpace downloaded
 unzip -o "master.zip"
 # Remove unnecessary file
