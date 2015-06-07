@@ -1,37 +1,35 @@
 dspace-auto-install
 ===================
 
-Automatic install DSpace on Ubuntu like systems
+Automatic install DSpace on Ubuntu like systems.
 
 This project was based in article LiveCD on [Wiki DSpace].
 
 http://royopa.wordpress.com/2014/03/04/instalacao-do-dspace-4-1-em-sistemas-ubuntu-like/
 
-Processo via linha de comando
-==============
+Checking the status in command line
+===================================
 
 http://asciinema.org/a/10778
 
 Download a Linux Image
 =====================
 
-Para evitar o processo de instalação do Linux foi baixada uma imagem do [XUbuntu], localizada no site [Virtual Box Images], conforme abaixo::
+To avoid the install process, we download a imagem with Ubuntu Linux at the site [Virtual Box Images].
 
-http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z
-
-    Xubuntu 12.04 codename Precise Pangolin
-    Size (compressed/uncompressed): 502.2 MBytes / 2.6 GBytes
-    Active user account(s) (username/password): xubuntu/reverse
+    http://sourceforge.net/projects/osboxes/files/vms/vbox/Ubuntu/14.04/14.04.2/Ubuntu_14.04.2-64bit.7z/download
+    Credentials & Info
+    Username: osboxes Password: osboxes.org
 
 Clone the repository
 ===================
 
-Agora você irá "clonar" o projeto para a sua máquina local:
+Clone the repository to your computer:
    
     $ git clone git@github.com:royopa/dspace-auto-install.git
 
 
-OR download the package
+or download the package
 ===============
 ```shell
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
@@ -44,7 +42,7 @@ cd dspace-auto-install-master
 Change the parameters
 =====================
 
-Altere os parâmetros dos arquivos abaixo de acordo com suas necessidades:
+Change the parameters in according to your needs:
 
 build-dspace
 ------------
@@ -76,10 +74,10 @@ dspace.cfg
     
 Install
 =======
-Execute o script de instalação
+Execute the install script
 
     $ ./build-dspace
 
-[Virtual Box Images]:"http://virtualboxes.org/images/ubuntu/"
+[Virtual Box Images]:"http://www.osboxes.org/ubuntu/#builder-column-542409983f9f0"
 [Wiki DSpace]:"https://wiki.duraspace.org/display/DSPACE/LiveCD"
 [XUbuntu]:"http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z"
