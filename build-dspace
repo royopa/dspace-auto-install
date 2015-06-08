@@ -11,6 +11,9 @@ source ~/.profile
 nvm install 0.10.31
 nvm alias default 0.10.31
 
+# Install npm
+sudo apt-get install -y npm
+
 # Install Bower
 npm install -g bower
 
