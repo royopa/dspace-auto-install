@@ -35,6 +35,8 @@ sudo npm install -g grunt
 sudo npm install -g grunt-cli
 export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 
+cd dspace-auto-install
+
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
 
