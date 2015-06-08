@@ -28,12 +28,12 @@ sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmis
 sudo apt-get install -y openjdk-7-jdk 
 sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip maven mc
 
-sudo apt-get install -y nodejs
-sudo apt-get install -y nodejs-legacy
-sudo apt-get install -y npm
-sudo npm install -g bower
-sudo npm install -g grunt
-sudo npm install -g grunt-cli
+#sudo apt-get install -y nodejs
+#sudo apt-get install -y nodejs-legacy
+#sudo apt-get install -y npm
+#sudo npm install -g bower
+#sudo npm install -g grunt
+#sudo npm install -g grunt-cli
 
 # vai para o diretório do auto install
 cd dspace-auto-install
