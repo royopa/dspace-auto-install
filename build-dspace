@@ -8,16 +8,16 @@ sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libr
 git clone git://github.com/sstephenson/rbenv.git .rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-$SHELL
 
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-$SHELL
 
 git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 rbenv install 2.2.2
 rbenv global 2.2.2
 ruby -v
+
+export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 
 sudo gem install sass -v 3.3.14
 sudo gem install compass -v 1.0.1
@@ -33,8 +33,8 @@ sudo apt-get install -y npm
 sudo npm install -g bower
 sudo npm install -g grunt
 sudo npm install -g grunt-cli
-export GEM_HOME=$(ruby -e 'print Gem.user_dir')
 
+# vai para o diretório do auto install
 cd dspace-auto-install
 
 #copiar o arquivo do tomcat
