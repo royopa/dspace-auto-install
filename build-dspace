@@ -152,5 +152,4 @@ sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 restart
 
 # All done
-echo
 echo Build completed!
