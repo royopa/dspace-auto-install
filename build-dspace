@@ -1,8 +1,12 @@
 #!/bin/bash
-
-sudo apt-get update
-sudo apt-get install -y language-pack-en
 sudo apt-get install -y software-properties-common python-software-properties
+sudo apt-get install -y git wget unzip mc openjdk-7-jdk
+
+sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main"
+sudo apt-get update
+sudo apt-get install -y maven3
+
+sudo apt-get install -y language-pack-en
 sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev rbenv
 
 # Install Node
