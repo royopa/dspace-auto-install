@@ -4,7 +4,7 @@ sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
 sudo dpkg-reconfigure locales
 
 sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
-sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven
+sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl
 
 # Install Node
 curl -sL https://deb.nodesource.com/setup | sudo bash -
