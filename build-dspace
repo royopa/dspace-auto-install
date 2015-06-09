@@ -1,13 +1,10 @@
 #!/bin/bash
-sudo apt-get install -y software-properties-common python-software-properties
+sudo apt-get install -y software-properties-common python-software-properties language-pack-en
 sudo apt-get install -y git wget unzip mc openjdk-7-jdk
 
 sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main"
 sudo apt-get update
 sudo apt-get install -y maven3
-
-sudo apt-get install -y language-pack-en
-sudo apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev rbenv
 
 # Install Node
 curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -29,8 +26,7 @@ gem install compass -v 1.0.1
 
 #Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn
-sudo apt-get install -y openjdk-7-jdk 
-sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip maven mc
+sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip mc
 
 #sudo apt-get install -y nodejs
 #sudo apt-get install -y nodejs-legacy
