@@ -61,7 +61,7 @@ sudo chown dspace /dspace
 
 # Stop tomcat
 echo Stopping tomcat
-sudo service tomcat7 stop
+sudo service tomcmvat7 stop
 
 # Restart postgresql
 echo Restarting service postgresql
@@ -120,7 +120,7 @@ export MAVEN_OPTS=-Xmx1024M
 
 echo  - Running 'mvn package' on /dspace-src
 cd /dspace-src/dspace
-sudo mvn -X package -Dmirage2.on=true -Dmirage2.deps.included=false
+sudo mvn -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
 pwd=`pwd` && sudo cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-installer/config/dspace.cfg"
