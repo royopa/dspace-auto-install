@@ -17,25 +17,25 @@ Download a Linux Image
 
 To avoid the install process, we download a imagem with Ubuntu Linux at the site [Virtual Box Images].
 
-    http://sourceforge.net/projects/osboxes/files/vms/vbox/Ubuntu/14.04/14.04.2/Ubuntu_14.04.2-64bit.7z/download
-    Credentials & Info
-    Username: osboxes Password: osboxes.org
+Ubuntu Linux Server Edition 14.04 x86
+Size (compressed/uncompressed): 430 MB/1.4 GB
+MD5SUM of ova image: 7afed719e42e59f870509b6ffe53c442
+Link: https://s3-eu-west-1.amazonaws.com/virtualboxes.org/ubuntu-14.04-server-i386.ova.torrent
+Active user account(s)(username/password): ubuntu/reverse
 
 Clone the repository
 ===================
 
 Clone the repository to your computer:
-   
-    $ git clone git@github.com:royopa/dspace-auto-install.git
-
+```shell
+git clone git@github.com:royopa/dspace-auto-install.git
+```
 
 or download the package
 ===============
 ```shell
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
-
 unzip master.zip
-
 cd dspace-auto-install-master
 ```
 
@@ -76,7 +76,9 @@ Install
 =======
 Execute the install script
 
-    $ ./build-dspace
+```shell
+./build-dspace
+```
 
 [Virtual Box Images]:"http://www.osboxes.org/ubuntu/#builder-column-542409983f9f0"
 [Wiki DSpace]:"https://wiki.duraspace.org/display/DSPACE/LiveCD"
