@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# set DSpace version to install
+VERSION_DSPACE="5.2"
+
 sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
 sudo dpkg-reconfigure locales
 
@@ -85,7 +89,7 @@ echo  - Removing old copy of /dspace-src
 sudo rm -rf /dspace-src/*
 
 echo  - Downloading new copy of DSpace
-wget "https://github.com/DSpace/DSpace/archive/dspace-5.2.zip" -O master.zip
+wget "https://github.com/DSpace/DSpace/archive/dspace-$VERSION_DSPACE.zip" -O master.zip
 echo  - Extracting the DSpace downloaded
 unzip -o "master.zip"
 # Remove unnecessary file
@@ -110,7 +114,7 @@ if $dspace_user_exists; then
 fi
 
 echo  - "Copying DSpace-master to /dspace-src"
-sudo cp -R "DSpace-dspace-5.2/"* /dspace-src
+sudo cp -R "DSpace-dspace-$VERSION_DSPACE/"* /dspace-src
 
 # Remove unnecessary folder
 rm -rf "DSpace-master"
