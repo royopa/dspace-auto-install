@@ -18,10 +18,14 @@ Download a Linux Image
 To avoid the install process, we download a imagem with Ubuntu Linux at the site [Virtual Box Images].
 
 Ubuntu Linux Server Edition 14.04 x86
+
 Size (compressed/uncompressed): 430 MB/1.4 GB
+
 MD5SUM of ova image: 7afed719e42e59f870509b6ffe53c442
+
 Link: https://s3-eu-west-1.amazonaws.com/virtualboxes.org/ubuntu-14.04-server-i386.ova.torrent
-Active user account(s)(username/password): ubuntu/reverse
+
+Active user account(s)(username/password): **ubuntu/reverse**
 
 Clone the repository
 --------------------
@@ -47,7 +51,7 @@ Change the parameters in according to your needs:
 build-dspace
 ------------
 
-    VERSION_DSPACE="5.2"
+VERSION_DSPACE="5.2"
     
 build.properties
 ----------------
@@ -80,8 +84,8 @@ Execute the install script
 ./build-dspace
 ```
 
-Using with via Vagrant
-----------------------
+Using with Vagrant
+------------------
 ```sh
 vagrant up
 ```
