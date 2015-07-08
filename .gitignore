@@ -1,2 +1,23 @@
+# Ignore Vagrant settings
+.vagrant/
+
 /Anotacoes.txt
 /Artigo_Blog_DSpace.docx
+
+# Ignore anything in "content/" subfolder, except for README
+/content/*
+!/content/README.md
+
+# Ignore "dspace/" subfolder, except for the README
+/dspace/*
+!/dspace/readme.md
+
+# Ignore the "dspace-src/" subfolder
+/dspace-src/*
+!/dspace-src/readme.md
+
+# Ignore IDE folders / files
+# IntelliJ IDEA
+.idea
+# NetBeans
+nbactions.xml
