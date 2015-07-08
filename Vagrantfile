@@ -22,7 +22,9 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 8080, host: 8081
+  config.vm.network :forwarded_port, guest: 5432, host: 5433
+  config.vm.network :forwarded_port, guest: 8443, host: 8443
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -70,6 +72,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
     sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
     # this repository 
+    cd ~
     wget https://github.com/royopa/dspace-auto-install/archive/master.zip
     unzip master.zip
     cd dspace-auto-install-master
