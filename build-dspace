@@ -1,44 +1,48 @@
 #!/bin/bash
-
 sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
 sudo dpkg-reconfigure locales
 
 sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
 sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl
 
-# Install Node
-curl -sL https://deb.nodesource.com/setup | sudo bash -
-sudo apt-get install -y --force-yes nodejs
+# install Node
+#curl -sL https://deb.nodesource.com/setup | sudo bash -
+#sudo apt-get install -y --force-yes nodejs
 
-# Install Bower
-npm install -g bower
+# install Bower
+#npm install -g bower
 
-# Install Grunt
-npm install -g grunt && npm install -g grunt-cli
+# install Grunt
+#npm install -g grunt && npm install -g grunt-cli
 
-# Install Ruby
-curl -sSL https://get.rvm.io | bash -s stable --ruby
+# install Ruby
+#curl -sSL https://get.rvm.io | bash -s stable --ruby
 
-# Install Compass
-gem install sass -v 3.3.14
-gem install compass -v 1.0.1
+# install Compass
+#gem install sass -v 3.3.14
+#gem install compass -v 1.0.1
 
-#Remove software not needed to make the resultant instalattion a bit smaller
-sudo apt-get remove -y brasero wodim tomboy f-spot gimp ekiga evolution transmission-common rhythmbox totem totem-plugins totem-common totem-mozilla maven2 transmission-gtk thunderbird xchat gimp parole xfburn
+# Remove software not needed to make the resultant instalattion a bit smaller
 sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip mc
 
 # seta a variável de ambiente GEM_HOME
-echo export GEM_HOME=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
+#echo export GEM_HOME=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
 # seta a variável de ambiente GEM_PATH
-echo export GEM_PATH=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
+#echo export GEM_PATH=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
 
 # recarrega o .bashrc sem ter que fazer login novamente
-source ~/.bashrc
+#source ~/.bashrc
 # recarrega o .bashrc para o root
-sudo bash -c 'source $HOME/.bashrc;'
+#sudo bash -c 'source $HOME/.bashrc;'
 
-# vai para o diretório do auto install
-cd dspace-auto-install
+# check if user vagrant exists
+vagrant_user_exists=false
+getent passwd vagrant >/dev/null 2>&1 && vagrant_user_exists=true
+
+# se estiver no vagrant vai para o diretório do auto install
+if $vagrant_user_exists; then
+    cd dspace-auto-install
+fi
 
 #copiar o arquivo do tomcat
 sudo cp tomcat7 /etc/default/tomcat7
@@ -84,7 +88,6 @@ echo  - Removing old copy of /dspace-src
 sudo rm -rf /dspace-src/*
 
 echo  - Downloading new copy of DSpace
-#wget "https://github.com/DSpace/DSpace/archive/master.zip"
 wget "https://github.com/DSpace/DSpace/archive/dspace-5.2.zip" -O master.zip
 echo  - Extracting the DSpace downloaded
 unzip -o "master.zip"
@@ -92,9 +95,7 @@ unzip -o "master.zip"
 echo  - Removing file downloaded
 sudo rm "master.zip"
 
-# Check users dspace and vagrant
-vagrant_user_exists=false
-getent passwd vagrant >/dev/null 2>&1 && vagrant_user_exists=true
+# Check user dspace
 dspace_user_exists=false
 getent passwd dspace >/dev/null 2>&1 && dspace_user_exists=true
 
@@ -112,22 +113,28 @@ if $dspace_user_exists; then
 fi
 
 echo  - "Copying DSpace-master to /dspace-src"
-#sudo cp -R "DSpace-master/"* /dspace-src
 sudo cp -R "DSpace-dspace-5.2/"* /dspace-src
-
-sudo cp -f build.properties /dspace-src/build.properties
-sudo cp -f dspace.cfg /dspace-src/dspace.cfg
-sudo cp -R ROOT /dspace-src/ROOT
 
 # Remove unnecessary folder
 rm -rf "DSpace-master"
 
 # Build DSpace-installed
 echo Building DSpace
+
 # Change build.properties
 echo  - Copying build.properties to /dspace-src/build.properties
-cp build.properties /dspace-src/build.properties
+sudo cp -f build.properties /dspace-src/build.properties
 
+# Copy dspace.cfg
+echo  - Copying dspace.cfg to /dspace-src/dspace.cfg
+sudo cp -f dspace.cfg /dspace-src/dspace.cfg
+
+# Copy ROOT
+echo  - Copying ROOT to /dspace-src/ROOT
+sudo cp -R ROOT /dspace-src/ROOT
+
+# Set MAVEN_OPTS with 1024M memory
+echo  - Set MAVEN_OPTS with 1024M memory
 export MAVEN_OPTS=-Xmx1024M
 
 echo  - Running 'mvn package' on /dspace-src
