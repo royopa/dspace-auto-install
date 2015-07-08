@@ -3,7 +3,7 @@ dspace-auto-install
 
 Automatic install DSpace on Ubuntu like systems.
 
-This project was based in article LiveCD on [Wiki DSpace].
+This project was based in article LiveCD on [Wiki DSpace](https://wiki.duraspace.org/display/DSPACE/LiveCD).
 
 http://royopa.wordpress.com/2014/03/04/instalacao-do-dspace-4-1-em-sistemas-ubuntu-like/
 
@@ -15,7 +15,7 @@ http://asciinema.org/a/10778
 Download a Linux Image
 ----------------------
 
-To avoid the install process, we download a imagem with Ubuntu Linux at the site [Virtual Box Images].
+To avoid the install process, we download a imagem with Ubuntu Server Linux.
 
 Ubuntu Linux Server Edition 14.04 x86
 
@@ -27,18 +27,21 @@ Link: https://s3-eu-west-1.amazonaws.com/virtualboxes.org/ubuntu-14.04-server-i3
 
 Active user account(s)(username/password): **ubuntu/reverse**
 
-Clone the repository
+Clone this repository
 --------------------
 
-Clone the repository to your computer:
 ```shell
-git clone git@github.com:royopa/dspace-auto-install.git && cd dspace-auto-install-master
+cd ~
+git clone git@github.com:royopa/dspace-auto-install.git
+cd dspace-auto-install-master
 ```
 
 or download the package
-------------------------
+-----------------------
 ```shell
-wget https://github.com/royopa/dspace-auto-install/archive/master.zip && unzip master.zip && cd dspace-auto-install-master
+cd ~
+wget https://github.com/royopa/dspace-auto-install/archive/master.zip
+unzip master.zip && cd dspace-auto-install-master
 ```
 
 Change the parameters
@@ -87,7 +90,3 @@ Using with Vagrant
 ```sh
 vagrant up
 ```
-
-[Virtual Box Images]:"http://www.osboxes.org/ubuntu/#builder-column-542409983f9f0"
-[Wiki DSpace]:"https://wiki.duraspace.org/display/DSPACE/LiveCD"
-[XUbuntu]:"http://downloads.sourceforge.net/virtualboximage/xubuntu_1204.7z"
