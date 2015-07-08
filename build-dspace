@@ -3,7 +3,7 @@ sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
 sudo dpkg-reconfigure locales
 
 sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
-sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl
+sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
 
 # install Node
 #curl -sL https://deb.nodesource.com/setup | sudo bash -
@@ -21,9 +21,6 @@ sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl
 # install Compass
 #gem install sass -v 3.3.14
 #gem install compass -v 1.0.1
-
-# Remove software not needed to make the resultant instalattion a bit smaller
-sudo apt-get install -y ant ant-optional tomcat7 postgresql tomcat7-admin unzip mc
 
 # seta a variável de ambiente GEM_HOME
 #echo export GEM_HOME=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
