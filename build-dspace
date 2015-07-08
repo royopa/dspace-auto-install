@@ -90,14 +90,26 @@ echo  - Extracting the DSpace downloaded
 unzip -o "master.zip"
 # Remove unnecessary file
 echo  - Removing file downloaded
-rm "master.zip"
+sudo rm "master.zip"
+
+# Check users dspace and vagrant
+vagrant_user_exists=false
+getent passwd vagrant >/dev/null 2>&1 && vagrant_user_exists=true
+dspace_user_exists=false
+getent passwd dspace >/dev/null 2>&1 && dspace_user_exists=true
 
 # Make the relevant directories
 echo  - Making /dspace-src
 sudo rm -rf /dspace-src/*
 sudo mkdir /dspace-src
-sudo chown dspace /dspace-src
-sudo chown vagrant /dspace-src
+
+if $vagrant_user_exists; then
+    sudo chown vagrant /dspace-src
+fi
+
+if $dspace_user_exists; then
+    sudo chown dspace /dspace-src
+fi
 
 echo  - "Copying DSpace-master to /dspace-src"
 #sudo cp -R "DSpace-master/"* /dspace-src
@@ -150,7 +162,9 @@ sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
 
 # Start tomcat
 echo Starting tomcat
-sudo usermod -a -G vagrant tomcat7
+if $vagrant_user_exists; then
+    sudo usermod -a -G vagrant tomcat7
+fi
 sudo chown tomcat7:tomcat7 /dspace -R
 sudo service tomcat7 restart
 
