@@ -32,7 +32,7 @@ Clone this repository
 
 ```shell
 cd ~
-git clone git@github.com:royopa/dspace-auto-install.git
+git clone git@github.com:royopa/dspace-auto-install.git dspace-auto-install-master
 cd dspace-auto-install-master
 ```
 
