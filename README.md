@@ -32,15 +32,13 @@ Clone the repository
 
 Clone the repository to your computer:
 ```shell
-git clone git@github.com:royopa/dspace-auto-install.git
+git clone git@github.com:royopa/dspace-auto-install.git && cd dspace-auto-install-master
 ```
 
 or download the package
 ------------------------
 ```shell
-wget https://github.com/royopa/dspace-auto-install/archive/master.zip
-unzip master.zip
-cd dspace-auto-install-master
+wget https://github.com/royopa/dspace-auto-install/archive/master.zip && unzip master.zip && cd dspace-auto-install-master
 ```
 
 Change the parameters
@@ -51,7 +49,7 @@ Change the parameters in according to your needs:
 build-dspace
 ------------
 
-VERSION_DSPACE="5.2"
+    VERSION_DSPACE="5.2"
     
 build.properties
 ----------------
