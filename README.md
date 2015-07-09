@@ -87,6 +87,15 @@ Execute the install script
 
 Using with Vagrant
 ------------------
+
+Install landrush plugin
+
+```sh
+vagrant plugin install landrush
+```
+
+And start the virtual machine
+
 ```sh
 vagrant up
 ```
