@@ -41,7 +41,8 @@ or download the package
 ```shell
 cd ~
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
-unzip master.zip && cd dspace-auto-install-master
+unzip master.zip
+cd dspace-auto-install-master
 ```
 
 Change the parameters
