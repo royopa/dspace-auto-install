@@ -46,7 +46,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  # config.vm.synced_folder "dspace-src", "/dspace-src", create: true
+  config.vm.synced_folder "dspace-src", "/dspace-src", create: true
 
   #------------------------------
   # Caching Settings (if enabled)
