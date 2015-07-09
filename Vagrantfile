@@ -122,9 +122,7 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     # dependencies
-    sudo apt-get update
-    sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
-    sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
+    sudo apt-get install -y --force-yes wget unzip 
     # this repository 
     cd ~
     wget https://github.com/royopa/dspace-auto-install/archive/master.zip
