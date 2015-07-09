@@ -10,6 +10,12 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  # define this box so Vagrant doesn't call it "default"
+  config.vm.define "vagrant-dspace"
+
+  # Hostname for virtual machine
+  config.vm.hostname = "dspace.vagrant.dev"
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
@@ -41,6 +47,33 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   # config.vm.synced_folder "dspace-src", "/dspace-src", create: true
+
+  #------------------------------
+  # Caching Settings (if enabled)
+  #------------------------------
+  # BEGIN Vagrant-Cachier (https://github.com/fgrehm/vagrant-cachier) configuration
+  # This section will only be triggered if you have installed "vagrant-cachier"
+  #   vagrant plugin install vagrant-cachier
+  if Vagrant.has_plugin?('vagrant-cachier')
+     # Use a vagrant-cachier cache if one is detected
+     config.cache.auto_detect = true
+
+     # set vagrant-cachier scope to :box, so other projects that share the
+     # vagrant box will be able to used the same cached files
+     config.cache.scope = :box
+
+     # and lets specifically use the apt cache (note, this is a Debian-ism)
+     config.cache.enable :apt
+
+     # use the generic cache bucket for Maven
+     config.cache.enable :generic, {
+       "maven" => { cache_dir: "/home/vagrant/.m2/repository" },
+     }
+
+     # set the permissions for .m2 so we can use Maven properly
+     config.vm.provision :shell, :inline => "chown vagrant:vagrant /home/vagrant/.m2"
+  end
+  # END Vagrant-Cachier configuration
 
   # BEGIN Landrush (https://github.com/phinze/landrush) configuration
   # This section will only be triggered if you have installed "landrush"

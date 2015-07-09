@@ -88,10 +88,11 @@ Execute the install script
 Using with Vagrant
 ------------------
 
-Install landrush plugin
+Install plugins below:
 
 ```sh
 vagrant plugin install landrush
+vagrant plugin install vagrant-vbguest
 ```
 
 And start the virtual machine
