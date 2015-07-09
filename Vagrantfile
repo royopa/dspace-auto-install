@@ -41,7 +41,18 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
   # config.vm.synced_folder "dspace-src", "/dspace-src", create: true
- 
+
+  # BEGIN Landrush (https://github.com/phinze/landrush) configuration
+  # This section will only be triggered if you have installed "landrush"
+  #     vagrant plugin install landrush
+  if Vagrant.has_plugin?('landrush')
+    config.landrush.enable
+    # let's use the Google free DNS
+    config.landrush.upstream '8.8.8.8'
+    config.landrush.guest_redirect_dns = false
+  end
+  # END Landrush configuration
+  
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
