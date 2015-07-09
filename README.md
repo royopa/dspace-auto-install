@@ -88,15 +88,15 @@ Execute the install script
 
 So, access the application with links below:
 
-http://localhost:8080/xmlui/
+[http://localhost:8080/xmlui/](http://localhost:8080/xmlui/)
 
-http://localhost:8080/jspui/
+[http://localhost:8080/jspui/](http://localhost:8080/jspui/)
 
-http://localhost:8080/oai/
+[http://localhost:8080/oai/](http://localhost:8080/oai/)
 
 
-Using with Vagrant
-------------------
+Vagrant
+-------
 
 You can use vagrant to test the install. For this, follow the commands below:
 
@@ -116,8 +116,8 @@ vagrant up
 
 So, access the application with links below:
 
-http://localhost:8081/xmlui/
+[http://localhost:8081/xmlui/](http://localhost:8081/xmlui/)
 
-http://localhost:8081/jspui/
+[http://localhost:8081/jspui/](http://localhost:8081/jspui/)
 
-http://localhost:8081/oai/
+[http://localhost:8081/oai/](http://localhost:8081/oai/)
