@@ -105,6 +105,7 @@ Install plugins:
 ```sh
 vagrant plugin install landrush
 vagrant plugin install vagrant-vbguest
+vagrant plugin install vagrant-cachier
 ```
 
 And start the virtual machine
