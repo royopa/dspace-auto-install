@@ -91,8 +91,8 @@ Vagrant.configure(2) do |config|
   #-----------------------------
   # Check our system locale -- make sure it is set to UTF-8
   # This also means we need to run 'dpkg-reconfigure' to avoid "unable to re-open stdin" errors (see http://serverfault.com/a/500778)
-  # For now, we have a hardcoded locale of "pt_BR.UTF-8"
-  locale = "pt_BR.UTF-8"
+  # For now, we have a hardcoded locale of "en_US.UTF-8"
+  locale = "en_US.UTF-8"
   config.vm.provision :shell, :inline => "echo 'Setting locale to UTF-8 (#{locale})...' && locale | grep 'LANG=#{locale}' > /dev/null || update-locale --reset LANG=#{locale} && dpkg-reconfigure locales"
 
   # Provider-specific configuration so you can fine-tune various
