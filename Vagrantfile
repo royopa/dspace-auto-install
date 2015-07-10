@@ -121,7 +121,7 @@ Vagrant.configure(2) do |config|
     # this repository 
     cd ~
     wget https://github.com/royopa/dspace-auto-install/archive/master.zip
-    unzip master.zip
+    unzip -o master.zip
     cd dspace-auto-install-master
     ./build-dspace
   SHELL
