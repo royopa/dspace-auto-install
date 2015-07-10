@@ -117,7 +117,8 @@ Vagrant.configure(2) do |config|
     # locale correct
     sudo locale-gen pt_BR.UTF-8
     # dependencies
-    sudo apt-get install -y --force-yes wget unzip 
+    sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
+    sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
     # this repository 
     cd ~
     wget https://github.com/royopa/dspace-auto-install/archive/master.zip
