@@ -24,6 +24,7 @@ Active user account(s)(username/password): **ubuntu/reverse**
 
 Getting Started
 ---------------
+
 ```shell
 cd ~
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
@@ -102,11 +103,11 @@ vagrant up
 
 So, access the application with links below:
 
-[http://localhost:8081/xmlui/](http://localhost:8081/xmlui/)
+[http://localhost:8080/xmlui/](http://localhost:8080/xmlui/)
 
-[http://localhost:8081/jspui/](http://localhost:8081/jspui/)
+[http://localhost:8080/jspui/](http://localhost:8080/jspui/)
 
-[http://localhost:8081/oai/](http://localhost:8081/oai/)
+[http://localhost:8080/oai/](http://localhost:8080/oai/)
 
 Extra
 -----
