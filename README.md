@@ -7,8 +7,6 @@ This project was based in article LiveCD on [Wiki DSpace](https://wiki.duraspace
 
 http://royopa.wordpress.com/2014/03/04/instalacao-do-dspace-4-1-em-sistemas-ubuntu-like/
 
-[![asciicast](https://asciinema.org/a/10778.png)](https://asciinema.org/a/10778)
-
 Download a Linux Image
 ----------------------
 
@@ -24,17 +22,8 @@ Link: https://s3-eu-west-1.amazonaws.com/virtualboxes.org/ubuntu-14.04-server-i3
 
 Active user account(s)(username/password): **ubuntu/reverse**
 
-Clone this repository
---------------------
-
-```shell
-cd ~
-git clone git@github.com:royopa/dspace-auto-install.git dspace-auto-install-master
-cd dspace-auto-install-master
-```
-
-or download the package
------------------------
+Getting Started
+---------------
 ```shell
 cd ~
 wget https://github.com/royopa/dspace-auto-install/archive/master.zip
@@ -118,3 +107,10 @@ So, access the application with links below:
 [http://localhost:8081/jspui/](http://localhost:8081/jspui/)
 
 [http://localhost:8081/oai/](http://localhost:8081/oai/)
+
+Extra
+-----
+
+See below how to script works:
+
+[![asciicast](https://asciinema.org/a/10778.png)](https://asciinema.org/a/10778)
