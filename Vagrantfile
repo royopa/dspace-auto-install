@@ -115,7 +115,7 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     # locale correct
-    locale-gen en_US.UTF-8
+    sudo locale-gen pt_BR.UTF-8
     # dependencies
     sudo apt-get install -y --force-yes wget unzip 
     # this repository 
