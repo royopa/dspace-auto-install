@@ -9,33 +9,6 @@ sudo dpkg-reconfigure locales
 sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
 sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
 
-# install Node
-#curl -sL https://deb.nodesource.com/setup | sudo bash -
-#sudo apt-get install -y --force-yes nodejs
-
-# install Bower
-#npm install -g bower
-
-# install Grunt
-#npm install -g grunt && npm install -g grunt-cli
-
-# install Ruby
-#curl -sSL https://get.rvm.io | bash -s stable --ruby
-
-# install Compass
-#gem install sass -v 3.3.14
-#gem install compass -v 1.0.1
-
-# seta a variável de ambiente GEM_HOME
-#echo export GEM_HOME=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
-# seta a variável de ambiente GEM_PATH
-#echo export GEM_PATH=$(ruby -e 'print Gem.user_dir') >> ~/.bashrc
-
-# recarrega o .bashrc sem ter que fazer login novamente
-#source ~/.bashrc
-# recarrega o .bashrc para o root
-#sudo bash -c 'source $HOME/.bashrc;'
-
 # check if user vagrant exists
 vagrant_user_exists=false
 getent passwd vagrant >/dev/null 2>&1 && vagrant_user_exists=true
