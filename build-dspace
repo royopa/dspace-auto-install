@@ -43,7 +43,7 @@ createdb --template=template0 -U dspace dspace
 
 # Download DSpace
 
-rm dspace-4.2-src-release.tar.gz*
+rm dspace-4.*-src-release.tar.gz*
 
 echo  - Downloading new copy of DSpace
 wget "http://sourceforge.net/projects/dspace/files/DSpace%20Stable/$VERSION_DSPACE/dspace-$VERSION_DSPACE-src-release.tar.gz"
@@ -81,10 +81,10 @@ cd /dspace-src/dspace/
 mvn -X package
 
 echo  - Coping the customized dspace.cfg to /{dspace-build}/config
-cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/config/dspace.cfg"
+cp $pwd/dspace.cfg "/dspace-src/dspace/target/dspace-build/config/dspace.cfg"
 
 echo  - Running ant fresh_install
-cd "/dspace-src/dspace/target/dspace-$VERSION_DSPACE-build/"
+cd "/dspace-src/dspace/target/dspace-build/"
 ant fresh_install
 
 # Create an admin user
