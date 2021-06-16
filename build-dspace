@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set DSpace version to install
-VERSION_DSPACE="5.2"
+VERSION_DSPACE="6.3"
 
 dist=`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'`
 
@@ -9,9 +9,9 @@ if [ "$dist" == "Ubuntu" ]; then
     sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
     sudo dpkg-reconfigure locales
     sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
-    sudo apt-get install -y --force-yes git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
+    sudo apt-get install -y --force-yes git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
 else
-    sudo yum install -y git wget unzip mc openjdk-7-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
+    sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat7 postgresql tomcat7-admin
 fi
 
 # check if user vagrant exists
