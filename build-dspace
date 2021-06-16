@@ -8,7 +8,7 @@ dist=`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'`
 if [ "$dist" == "Ubuntu" ]; then
     sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
     sudo dpkg-reconfigure locales
-    sudo apt-get install -y --force-yes software-properties-common python-software-properties language-pack-en build-essential
+    sudo apt-get install -y --force-yes software-properties-common language-pack-en build-essential
     sudo apt-get install -y --force-yes git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql tomcat9-admin
 else
     sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql tomcat9-admin
@@ -24,7 +24,7 @@ if $vagrant_user_exists; then
 fi
 
 #copiar o arquivo do tomcat
-sudo cp tomcat7 /etc/default/tomcat7
+sudo cp tomcat9 /etc/default/tomcat9
 
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
@@ -44,7 +44,7 @@ sudo chown dspace /dspace
 
 # Stop tomcat
 echo Stopping tomcat
-sudo service tomcmvat7 stop
+sudo service tomcat stop
 
 # Restart postgresql
 echo Restarting service postgresql
