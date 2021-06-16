@@ -27,7 +27,7 @@ fi
 sudo cp tomcat9 /etc/default/tomcat9
 
 echo Copying LiveCD ROOT webapp to tomcat
-sudo cp -R ROOT /var/lib/tomcat7/webapps/ROOT
+sudo cp -R ROOT /var/lib/tomcat9/webapps/ROOT
 
 #copiar o arquivo do postgresql
 sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
@@ -134,26 +134,26 @@ sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -
 
 # Delete old tomcat webapps
 echo Deleting old tomcat webapps
-sudo rm -rf /var/lib/tomcat7/webapps/*
+sudo rm -rf /var/lib/tomcat9/webapps/*
 
 # Copy webapps to tomcat
 echo Link webapps to tomcat
-sudo ln -s /dspace/webapps/jspui /var/lib/tomcat7/webapps/jspui
-sudo ln -s /dspace/webapps/oai /var/lib/tomcat7/webapps/oai
-sudo ln -s /dspace/webapps/rdf /var/lib/tomcat7/webapps/rdf
-sudo ln -s /dspace/webapps/rest /var/lib/tomcat7/webapps/rest
-sudo ln -s /dspace/webapps/solr /var/lib/tomcat7/webapps/solr
-sudo ln -s /dspace/webapps/sword /var/lib/tomcat7/webapps/sword
-sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat7/webapps/swordv2
-sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat7/webapps/xmlui
+sudo ln -s /dspace/webapps/jspui /var/lib/tomcat9/webapps/jspui
+sudo ln -s /dspace/webapps/oai /var/lib/tomcat9/webapps/oai
+sudo ln -s /dspace/webapps/rdf /var/lib/tomcat9/webapps/rdf
+sudo ln -s /dspace/webapps/rest /var/lib/tomcat9/webapps/rest
+sudo ln -s /dspace/webapps/solr /var/lib/tomcat9/webapps/solr
+sudo ln -s /dspace/webapps/sword /var/lib/tomcat9/webapps/sword
+sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat9/webapps/swordv2
+sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat9/webapps/xmlui
 
 # Start tomcat
 echo Starting tomcat
 if $vagrant_user_exists; then
-    sudo usermod -a -G vagrant tomcat7
+    sudo usermod -a -G vagrant tomcat9
 fi
-sudo chown tomcat7:tomcat7 /dspace -R
-sudo service tomcat7 restart
+sudo chown tomcat9:tomcat9 /dspace -R
+sudo service tomcat9 restart
 
 # All done
 echo Build completed!
