@@ -6,8 +6,6 @@ VERSION_DSPACE="6.3"
 dist=`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'`
 
 if [ "$dist" == "Ubuntu" ]; then
-    sudo locale-gen en_US en_US.UTF-8 pt_BR.UTF-8
-    sudo dpkg-reconfigure locales
     sudo apt-get install -y --force-yes software-properties-common language-pack-en build-essential
     sudo apt-get install -y --force-yes git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql tomcat9-admin
 else
@@ -60,6 +58,7 @@ echo  - Creating the dspace Postgres user
 sudo -u postgres psql "-c CREATE USER dspace WITH PASSWORD 'dspace' CREATEDB;"
 echo  - Creating the dspace database
 createdb -U dspace dspace
+sudo -u postgres psql --username=postgres dspace -c "CREATE EXTENSION pgcrypto;"
 
 # Download DSpace
 echo Download DSpace source
