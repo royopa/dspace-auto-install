@@ -7,9 +7,9 @@ dist=`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'`
 
 if [ "$dist" == "Ubuntu" ]; then
     sudo apt-get install -y software-properties-common language-pack-en build-essential
-    sudo apt-get install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql tomcat9-admin
+    sudo apt-get install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql
 else
-    sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql tomcat9-admin
+    sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql
 fi
 
 # check if user vagrant exists
