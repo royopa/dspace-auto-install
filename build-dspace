@@ -42,7 +42,7 @@ sudo chown dspace /dspace
 
 # Stop tomcat
 echo Stopping tomcat
-sudo service tomcat stop
+sudo service tomcat9 stop
 
 # Restart postgresql
 echo Restarting service postgresql
@@ -149,9 +149,10 @@ sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat9/webapps/xmlui
 # Start tomcat
 echo Starting tomcat
 if $vagrant_user_exists; then
-    sudo usermod -a -G vagrant tomcat9
+    sudo usermod -a -G vagrant tomcat
 fi
-sudo chown tomcat9:tomcat9 /dspace -R
+
+sudo chown tomcat:tomcat /dspace -R
 sudo service tomcat9 restart
 
 # All done
