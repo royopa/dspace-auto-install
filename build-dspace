@@ -79,7 +79,6 @@ getent passwd dspace >/dev/null 2>&1 && dspace_user_exists=true
 
 # Make the relevant directories
 echo  - Making /dspace-src
-sudo rm -rf /dspace-src/*
 sudo mkdir /dspace-src
 
 if $vagrant_user_exists; then
