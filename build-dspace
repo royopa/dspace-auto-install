@@ -141,7 +141,7 @@ sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -
 # mvn clean to conserve disk space
 echo  - Running mvn clean
 cd /dspace-src
-mvn clean
+sudo mvn clean
 cd $pwd
 
 # Copy webapps to tomcat
