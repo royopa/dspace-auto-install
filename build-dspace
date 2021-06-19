@@ -34,9 +34,12 @@ sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
 echo Removing /dspace
 sudo rm -rf /dspace/*
 
+# Adding dspace User
+echo  - Adding dspace user
+sudo useradd -m dspace
+
 # Make the relevant directories
 echo  - Making /dspace
-sudo useradd -m dspace
 sudo mkdir /dspace
 sudo chown dspace /dspace
 
@@ -80,6 +83,7 @@ getent passwd dspace >/dev/null 2>&1 && dspace_user_exists=true
 # Make the relevant directories
 echo  - Making /dspace-src
 sudo mkdir /dspace-src
+sudo chown dspace /dspace-src
 
 if $vagrant_user_exists; then
     sudo chown vagrant /dspace-src
