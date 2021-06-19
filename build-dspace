@@ -138,6 +138,12 @@ sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -
 # echo Deleting old tomcat webapps
 # sudo rm -rf /var/lib/tomcat8/webapps/*
 
+# mvn clean to conserve disk space
+echo  - Running mvn clean
+cd /dspace-src
+mvn clean
+cd $pwd
+
 # Copy webapps to tomcat
 echo Link webapps to tomcat
 sudo ln -s /dspace/webapps/jspui /var/lib/tomcat8/webapps/jspui
