@@ -7,9 +7,9 @@ dist=`grep DISTRIB_ID /etc/*-release | awk -F '=' '{print $2}'`
 
 if [ "$dist" == "Ubuntu" ]; then
     sudo apt-get install -y software-properties-common language-pack-en build-essential
-    sudo apt-get install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql
+    sudo apt-get install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat8 postgresql
 else
-    sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat9 postgresql
+    sudo yum install -y git wget unzip mc openjdk-8-jdk maven curl ant ant-optional tomcat8 postgresql
 fi
 
 # check if user vagrant exists
@@ -22,7 +22,7 @@ if $vagrant_user_exists; then
 fi
 
 #copiar o arquivo do tomcat
-sudo cp tomcat9 /etc/default/tomcat9
+sudo cp tomcat8 /etc/default/tomcat
 
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat9/webapps/ROOT
@@ -42,7 +42,7 @@ sudo chown dspace /dspace
 
 # Stop tomcat
 echo Stopping tomcat
-sudo service tomcat9 stop
+sudo service tomcat8 stop
 
 # Restart postgresql
 echo Restarting service postgresql
@@ -133,18 +133,18 @@ sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -
 
 # Delete old tomcat webapps
 echo Deleting old tomcat webapps
-sudo rm -rf /var/lib/tomcat9/webapps/*
+sudo rm -rf /var/lib/tomcat8/webapps/*
 
 # Copy webapps to tomcat
 echo Link webapps to tomcat
-sudo ln -s /dspace/webapps/jspui /var/lib/tomcat9/webapps/jspui
-sudo ln -s /dspace/webapps/oai /var/lib/tomcat9/webapps/oai
-sudo ln -s /dspace/webapps/rdf /var/lib/tomcat9/webapps/rdf
-sudo ln -s /dspace/webapps/rest /var/lib/tomcat9/webapps/rest
-sudo ln -s /dspace/webapps/solr /var/lib/tomcat9/webapps/solr
-sudo ln -s /dspace/webapps/sword /var/lib/tomcat9/webapps/sword
-sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat9/webapps/swordv2
-sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat9/webapps/xmlui
+sudo ln -s /dspace/webapps/jspui /var/lib/tomcat8/webapps/jspui
+sudo ln -s /dspace/webapps/oai /var/lib/tomcat8/webapps/oai
+sudo ln -s /dspace/webapps/rdf /var/lib/tomcat8/webapps/rdf
+sudo ln -s /dspace/webapps/rest /var/lib/tomcat8/webapps/rest
+sudo ln -s /dspace/webapps/solr /var/lib/tomcat8/webapps/solr
+sudo ln -s /dspace/webapps/sword /var/lib/tomcat8/webapps/sword
+sudo ln -s /dspace/webapps/swordv2 /var/lib/tomcat8/webapps/swordv2
+sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat8/webapps/xmlui
 
 # Start tomcat
 echo Starting tomcat
@@ -153,7 +153,7 @@ if $vagrant_user_exists; then
 fi
 
 sudo chown tomcat:tomcat /dspace -R
-sudo service tomcat9 restart
+sudo service tomcat8 restart
 
 # All done
 echo Build completed!
