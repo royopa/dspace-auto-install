@@ -63,7 +63,7 @@ sudo -u postgres psql --username=postgres dspace -c "CREATE EXTENSION pgcrypto;"
 # Download DSpace
 echo Download DSpace source
 echo  - Removing old copy of /dspace-src
-sudo rm -rf /dspace-src/*
+sudo rm -rf /dspace-src
 
 echo  - Downloading new copy of DSpace
 wget "https://github.com/DSpace/DSpace/archive/dspace-$VERSION_DSPACE.zip" -O master.zip
