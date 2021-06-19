@@ -22,7 +22,7 @@ if $vagrant_user_exists; then
 fi
 
 #copiar o arquivo do tomcat
-sudo cp tomcat8 /etc/default/tomcat
+sudo cp tomcat8 /etc/default/tomcat8
 
 echo Copying LiveCD ROOT webapp to tomcat
 sudo cp -R ROOT /var/lib/tomcat9/webapps/ROOT
@@ -132,8 +132,8 @@ echo Creating a DSpace admin user: username = dspace password = dspace
 sudo /dspace/bin/dspace create-administrator -e dspace -f DSpace -l User -c en -p dspace
 
 # Delete old tomcat webapps
-echo Deleting old tomcat webapps
-sudo rm -rf /var/lib/tomcat8/webapps/*
+# echo Deleting old tomcat webapps
+# sudo rm -rf /var/lib/tomcat8/webapps/*
 
 # Copy webapps to tomcat
 echo Link webapps to tomcat
@@ -149,10 +149,10 @@ sudo ln -s /dspace/webapps/xmlui /var/lib/tomcat8/webapps/xmlui
 # Start tomcat
 echo Starting tomcat
 if $vagrant_user_exists; then
-    sudo usermod -a -G vagrant tomcat
+    sudo usermod -a -G vagrant tomcat8
 fi
 
-sudo chown tomcat:tomcat /dspace -R
+sudo chown tomcat8:tomcat8 /dspace -R
 sudo service tomcat8 restart
 
 # All done
