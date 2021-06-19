@@ -25,7 +25,7 @@ fi
 sudo cp tomcat8 /etc/default/tomcat8
 
 echo Copying LiveCD ROOT webapp to tomcat
-sudo cp -R ROOT /var/lib/tomcat9/webapps/ROOT
+sudo cp -R ROOT /var/lib/tomcat9/webapps
 
 #copiar o arquivo do postgresql
 sudo cp pg_hba.conf /etc/postgresql/*/main/pg_hba.conf
